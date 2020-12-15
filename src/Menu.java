@@ -15,7 +15,6 @@ public class Menu {
     static final String url = "jdbc:mysql://localhost:3306/cr7_sarojkaul";
     private static final String USERNAME = "root";
     private static final String PASSWORD = "";
-
     Connection connection = null;
     static ArrayList<Classes> classes;
 
