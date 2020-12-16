@@ -1,5 +1,5 @@
 
-//I would like to get feedback due to someQuestions
+
 import java.*;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -16,7 +16,7 @@ public class Menu {
     private static final String USERNAME = "root";
     private static final String PASSWORD = "";
     Connection connection = null;
-    static ArrayList<Classes> classes;
+
 
     public void display_menu() {
         System.out.println("1) Display all students");
@@ -126,12 +126,12 @@ public class Menu {
                 list1.add(new Classes(class_name));
                 System.out.println("Teacher " + first_name + " " + last_name + " teaches " +class_name);
 
-                //donot know why show only 1 class why not all classes belongs to teacher??
+
 
                  preparedStatement.executeQuery();
                 preparedStatement.close();
 
-                preparedStatement.close();
+
 
             }
         } catch (ClassNotFoundException e) {
