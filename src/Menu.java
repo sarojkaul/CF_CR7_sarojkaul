@@ -96,7 +96,7 @@ public class Menu {
         }
     }
 
-    public List<Teacher> class_of_teacher() throws SQLException {
+    public void class_of_teacher() throws SQLException {
         try {
             Class.forName(JDBC_Driver);
             //Step:3 OPen a connection
@@ -108,7 +108,9 @@ public class Menu {
             Scanner scanner = new Scanner(System.in);
             System.out.println("Enter teacher_Id : ");
             int teacher_Id = scanner.nextInt();
-            sql = "SELECT teachers.first_name,teachers.last_name,classes.name,classes.id FROM teachers INNER JOIN classes ON teachers.id = classes.fk_teacher_id WHERE teachers.id = ? ";
+            sql = "SELECT teachers.first_name,teachers.last_name,classes.name,classes.id " +
+                    "FROM teachers INNER JOIN classes ON teachers.id = classes.fk_teacher_id " +
+                    "WHERE teachers.id = ? ";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, teacher_Id);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -122,23 +124,21 @@ public class Menu {
                 int id = resultSet.getInt("id");
                 list.add(new Teacher(first_name, last_name));
                 list1.add(new Classes(class_name));
-                System.out.println("Teacher " + first_name + " " + last_name + " teaches ");
+                System.out.println("Teacher " + first_name + " " + last_name + " teaches " +class_name);
 
                 //donot know why show only 1 class why not all classes belongs to teacher??
 
-                System.out.println(class_name);
-
-                preparedStatement.executeQuery();
+                 preparedStatement.executeQuery();
                 preparedStatement.close();
 
                 preparedStatement.close();
-                return list;
+
             }
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
 
-        return null;
+
     }
     public void execute_menu(){
         int n = 0;
